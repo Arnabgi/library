@@ -35,4 +35,9 @@ export class ListUserComponent implements OnInit {
       }
     })
   }
+
+  editUser(id:number){
+    console.log("id.............",id);
+    this.route.navigateByUrl('/user/edit/'+id);
+  }
 }

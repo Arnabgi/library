@@ -26,7 +26,8 @@
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
             <td>
-                <i class="fa fa-trash" (click)="deleteUser(user.id)"></i> 
+                <i class="fa fa-trash" (click)="deleteUser(user.id)"></i> &nbsp;
+                <i class="fa fa-edit" (click)="editUser(user.id)"></i> 
             </td>
         </tr>
     </table>

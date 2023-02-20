@@ -7,7 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><u>Create User</u>:</h1>
+    <div *ngIf="!hasId">
+        <h1><u>Create User</u>:</h1>
+    </div>
+    <div *ngIf="hasId">
+        <h1><u>Edit User</u>:</h1>
+    </div>
     <form [formGroup]="userCreateForm">
         <div>
             <label>Name</label>
@@ -15,9 +20,9 @@
         </div>
         <div>
             <label>Email</label>
-            <input type="text" formControlName="email">
+            <input type="text" formControlName="email" readonly>
         </div>
-        <div>
+        <div *ngIf="!hasId">
             <label>Password</label>
             <input type="text" formControlName="password">
         </div>
@@ -26,7 +31,8 @@
             <input type="text" formControlName="phone">
         </div>
         <div>
-            <input type="button" value="submit" (click)="createUser()">
+            <input type="button" value="Submit" *ngIf="!hasId" (click)="createUser()">
+            <input type="button" value="Submit" *ngIf="hasId" (click)="editUser()">
         </div>
     </form>
 </body>

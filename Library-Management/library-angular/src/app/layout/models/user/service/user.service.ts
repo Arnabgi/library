@@ -10,7 +10,7 @@ export class UserService {
     private http: HttpClient
   ) { }
   list() : Observable<any>{
-    return this.http.get('http://localhost:5004/library/user');
+    return this.http.get('http://localhost:5004/library/users');
   }
 
   login(logData:any) : Observable<any> {
@@ -23,5 +23,13 @@ export class UserService {
 
   delete(id:number) : Observable<any>{
     return this.http.delete('http://localhost:5004/library/user-remove/'+id)
+  }
+
+  view(id:number) : Observable<any> {
+    return this.http.get('http://localhost:5004/library/user/'+id)
+  }
+
+  edit(id:any,data:any) : Observable<any> {
+    return this.http.put('http://localhost:5001/library/user/'+id,data);
   }
 }

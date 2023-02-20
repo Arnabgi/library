@@ -51,6 +51,7 @@ module.exports={
 
     viewUser : async(req,res)=>{
         try {
+            console.log("view.......");
             let userId = req.params.id;
             let userData = await userService.viewUser(userId);
             res.json({
@@ -66,6 +67,7 @@ module.exports={
 
     listUser: async(req,res)=>{
         try {
+            console.log("list......");
             let getData = await userService.listUser();
             res.json({
                 status: getData.status ? getData.status : '',
@@ -84,7 +86,8 @@ module.exports={
             let userId = req.params.id;
             let value = {
                 name: req.body.name,
-                password: await bcrypt.hash(req.body.password,salt), 
+                // password: await bcrypt.hash(req.body.password,salt), 
+                email: req.body.email,
                 phone: req.body.phone,
             }; 
             let editData =  await userService.editUser(userId,value);
