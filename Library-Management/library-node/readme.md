@@ -37,11 +37,11 @@ Run the following scripts to initialize and start the server
 ```bash
 npm install
 ```
-<br/>
+
 ```bash
 sequelize-cli db:migrate
 ```
-<br/>
+
 ```bash
 npm start
 ```
