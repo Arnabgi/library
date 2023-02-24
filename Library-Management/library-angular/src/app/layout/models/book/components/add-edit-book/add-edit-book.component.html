@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div *ngIf="!hasId">
+        <h1><u>Add Book Details</u>:</h1>
+    </div>
+    <div *ngIf="hasId">
+        <h1><u>Edit Book Details</u>:</h1>
+    </div>
+    <form [formGroup]="bookForm">
+        <div>
+            <label>Book Name</label>
+            <input type="text" formControlName="name">
+        </div>
+        <div>
+            <label>Quantity</label>
+            <input type="number" formControlName="quaintity">
+        </div>
+        <div>
+            <label>Entry Date</label>
+            <input type="date" formControlName="entryDate">
+        </div>
+        <div>
+            <input type="button" value="Submit" *ngIf="!hasId" (click)="createBookDetails()">
+            <input type="button" value="Submit" *ngIf="hasId" (click)="editBook()">
+            &nbsp;
+            <input type="button" value="Back" (click)="back()">
+        </div>
+    </form>
+</body>
+</html>

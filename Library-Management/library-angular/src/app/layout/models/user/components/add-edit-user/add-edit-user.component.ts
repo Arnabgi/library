@@ -16,7 +16,6 @@ export class AddEditUserComponent implements OnInit,OnDestroy {
   public hasId = false;
   public librayInfo : Observable<any> | null = this.activatedRoute.paramMap.pipe(
     switchMap((params): any =>{
-      console.log("param............",params);
       this.libraryId = params.get('id');
       if(this.libraryId){
         this.hasId= true;
@@ -95,5 +94,9 @@ export class AddEditUserComponent implements OnInit,OnDestroy {
         alert("error");
       }
     })
+  }
+
+  back(){
+    this.route.navigateByUrl('/user/list');
   }
 }

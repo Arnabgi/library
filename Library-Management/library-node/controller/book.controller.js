@@ -38,7 +38,8 @@ module.exports={
             let bookId = req.params.id;
             let value = {
                 name: req.body.name,
-                quaintity: req.body.quaintity
+                quaintity: req.body.quaintity,
+                entryDate: req.body.entryDate
             }; 
             let editData =  await bookService.editbook(bookId,value);
             res.json({
@@ -60,6 +61,21 @@ module.exports={
                 status: removeUser.status ? removeUser.status : '',
                 message: removeUser.msg ? removeUser.msg : '',
             });  
+        } catch (error) {
+            console.log(error);
+            res.send(error);
+        }
+    },
+
+    viewBook : async(req,res)=>{
+        try {
+            let bookId = req.params.id;
+            let bookData = await bookService.viewBook(bookId);
+            res.json({
+                status: bookData.status ? bookData.status : '',
+                message: bookData.msg ? bookData.msg : '',
+                data: bookData.data ? bookData.data : ''
+            });
         } catch (error) {
             console.log(error);
             res.send(error);

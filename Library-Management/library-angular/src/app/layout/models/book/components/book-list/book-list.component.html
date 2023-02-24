@@ -8,10 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><u>User List</u>:</h1>
+    <h1><u>Book List</u>:</h1>
     <div>
         <button>
-            <a routerLink="/user/create">Add User</a>
+            <a routerLink="/book/create">Add Book</a>
         </button>
         &nbsp;
         <button>
@@ -21,23 +21,22 @@
     <table>
         <tr>
             <th>SI No.</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile Number</th>
+            <th>Book Name</th>
+            <th>Available book Quaintity</th>
+            <th>Entry Date</th>
             <th>Action</th>
         </tr>
-        <tr *ngFor="let user of userList; let i = index;">
+        <tr *ngFor="let book of bookList; let i = index;">
             <td>{{i+1}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phone}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.quaintity}}</td>
+            <td>{{book.entryDate}}</td>
             <td>
-                <i class="fa fa-trash" (click)="deleteUser(user.id)"></i> &nbsp;
-                <i class="fa fa-edit" (click)="editUser(user.id)"></i> &nbsp; 
-                <button (click)="bookIssue(user.id)">Issue Book</button>
+                <i class="fa fa-trash" (click)="deleteBook(book.id)"></i> &nbsp;
+                <i class="fa fa-edit" (click)="editBook(book.id)"></i> 
             </td>
         </tr>
-        <tr *ngIf="!userList.length">
+        <tr *ngIf="!bookList.length">
             <td colspan="5">No Data Found</td>
         </tr>
     </table>

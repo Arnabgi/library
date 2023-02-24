@@ -18,9 +18,6 @@ module.exports = {
       entryDate: {
         type: Sequelize.STRING
       },
-      exitDate: {
-        type: Sequelize.STRING
-      },
       isAvilable: {
         type: Sequelize.INTEGER
       },

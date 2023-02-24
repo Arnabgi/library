@@ -40,4 +40,8 @@ export class ListUserComponent implements OnInit {
     console.log("id.............",id);
     this.route.navigateByUrl('/user/edit/'+id);
   }
+
+  bookIssue(userId:number){
+    this.route.navigateByUrl('/book/book-issue/'+userId);
+  }
 }

@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     quaintity: DataTypes.INTEGER,
     entryDate: DataTypes.STRING,
-    exitDate: DataTypes.STRING,
     isAvilable: DataTypes.INTEGER
   }, {
     sequelize,

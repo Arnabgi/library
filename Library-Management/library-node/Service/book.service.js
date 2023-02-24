@@ -103,4 +103,29 @@ module.exports={
         }
     },
 
+    viewBook : async(bookId)=> {
+        try {
+            const bookData = await bookModel.findAll({
+                where:{
+                    id:bookId
+                }
+            });
+            if(bookData){
+                return {
+                    status: 200,
+                    msg: "success",
+                    data: bookData
+                };
+            }
+            else{
+                return{
+                    status:401,
+                    msg: "failed"
+                }
+            }
+        } catch (error) {
+            throw error;
+            
+        }
+    },
 }

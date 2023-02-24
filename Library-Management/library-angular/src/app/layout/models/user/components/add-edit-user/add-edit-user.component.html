@@ -33,6 +33,8 @@
         <div>
             <input type="button" value="Submit" *ngIf="!hasId" (click)="createUser()">
             <input type="button" value="Submit" *ngIf="hasId" (click)="editUser()">
+            &nbsp;
+            <input type="button" value="Back" (click)="back()">
         </div>
     </form>
 </body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1><u>Book Issue</u>:</h1>
+    </div>
+    <form [formGroup]="bookWithUserForm">
+        <div>
+            <label>Select Books</label>
+            <select formControlName="bookId">
+                <option value="" disabled>Choose book</option> 
+                <ng-container *ngFor="let book of bookList">             
+                        <option [value]="book.id">{{book.name}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div>
+            <label>Issue Date</label>
+            <input type="date" formControlName="issueDate">
+        </div>
+        <div>
+           <input type="button" value="submit" (click)="BookIssue()">
+        </div>
+    </form>
+</body>
+</html>
