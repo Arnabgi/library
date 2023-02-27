@@ -44,4 +44,8 @@ export class ListUserComponent implements OnInit {
   bookIssue(userId:number){
     this.route.navigateByUrl('/book/book-issue/'+userId);
   }
+
+  bookDetails(userId:number){
+    this.route.navigateByUrl('/book/show-books/'+ userId);
+  }
 }

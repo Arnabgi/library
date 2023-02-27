@@ -1,5 +1,6 @@
 const model = require('../models');
 const userModel = model.User;
+const userWithBookModel = model.userwithbook;
 const jwt = require('jsonwebtoken');
 const {Op} = require('sequelize');
 const bcrypt = require('bcrypt');
@@ -107,8 +108,17 @@ module.exports={
                 } 
             }
             const getdata = await userModel.findAll({
-                where: where
+                where: where,
+                include:[{
+                    model: userWithBookModel,
+                }]
             });
+            // const getBook = await userWithBookModel.findAll({
+            //     where:{
+            //         'userId': getdata.id
+            //     }
+            // });
+            // console.log("getBook..........",getBook);
             if(getdata){
                 return {
                     status: 200,

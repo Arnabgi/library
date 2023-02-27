@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><u>Issued Book List</u>:</h1>
+    <div>
+        <ul *ngFor="let book of bookList; let i = index">
+            <li>
+                {{book ? book.Book['name'] : 'Has no book'}}
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="!bookList.length">
+        <h3>Has No Book</h3>
+    </div>
+    <button (click)="back()">Back</button>
+</body>
+</html>

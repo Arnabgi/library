@@ -81,4 +81,21 @@ module.exports={
             res.send(error);
         }
     },
+
+    viewBookWithUser: async(req,res) => {
+        try {
+            let data = {
+                userId: req.params.userId || req.body.userId,
+            }
+            let userBookData = await bookService.viewBookWithUser(data);
+            res.json({
+                status: userBookData.status ? userBookData.status : '',
+                message: userBookData.msg ? userBookData.msg : '',
+                data: userBookData.data ? userBookData.data : ''
+            });            
+        } catch (error) {
+            console.log("error..........",error);
+            res.send(error);
+        }
+    }
 }

@@ -17,8 +17,8 @@ module.exports={
                 data : addBook.data ? addBook.data : ''
             });
         } catch (error) {
-            console.log("error..........",error);
+            //console.log("error..........",error);
             res.send(error);
         }
-    },
+    }
 }

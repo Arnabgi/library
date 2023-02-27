@@ -67,7 +67,7 @@ module.exports={
 
     listUser: async(req,res)=>{
         try {
-            console.log("list......");
+            //console.log("list......");
             let getData = await userService.listUser();
             res.json({
                 status: getData.status ? getData.status : '',

@@ -5,12 +5,14 @@ import { AddEditBookComponent } from './components/add-edit-book/add-edit-book.c
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { BookIssueComponent } from './components/book-issue/book-issue.component';
+import { IssuedBookComponent } from './components/issued-book/issued-book.component';
 
 @NgModule({
   declarations: [
     AddEditBookComponent,
     BookListComponent,
-    BookIssueComponent
+    BookIssueComponent,
+    IssuedBookComponent
   ],
   imports: [
     CommonModule,

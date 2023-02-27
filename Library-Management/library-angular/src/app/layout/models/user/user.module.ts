@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ListUserComponent,
-    AddEditUserComponent
+    AddEditUserComponent,
   ],
   imports: [
     CommonModule,

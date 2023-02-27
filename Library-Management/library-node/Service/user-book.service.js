@@ -2,7 +2,7 @@ const model = require('../models');
 const userBookModel = model.userwithbook;
 const {Op} = require('sequelize');
 module.exports={
-    addBookWithUser : async(value)=> {
+    addBookWithUser: async(value)=> {
         try {
             const addBookWithUser = await userBookModel.create(value);
             if(addBookWithUser){
@@ -22,5 +22,5 @@ module.exports={
         } catch (error) {
             throw error;
         }
-    },
+    }
 }

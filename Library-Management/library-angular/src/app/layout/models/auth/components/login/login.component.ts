@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit{
       if(result.status == 200){
         this.storage.setToken(result.data);
         console.log("login success");
-        this.route.navigateByUrl('/user/list')
+        this.route.navigateByUrl('/dashboard')
       }
       else{
         console.log("login Failed"); 

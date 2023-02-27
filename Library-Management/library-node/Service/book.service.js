@@ -1,5 +1,6 @@
 const model = require('../models');
 const bookModel = model.Books;
+const userBookModel = model.userwithbook;
 const jwt = require('jsonwebtoken');
 const {Op} = require('sequelize');
 module.exports={
@@ -128,4 +129,35 @@ module.exports={
             
         }
     },
+
+    viewBookWithUser: async(value)=> {
+        try {
+            const where = {
+                userId: value.userId
+            }
+            const getdata = await userBookModel.findAll({
+                where: where,
+                include: [{
+                    model:bookModel
+                }]
+            });
+            if(getdata){
+                return {
+                    status: 200,
+                    msg: "success",
+                    data: getdata
+                };
+            }
+            else{
+                return{
+                    status:401,
+                    msg: "failed"
+                };
+            }
+            
+        } catch (error) {
+            throw error;
+        }
+        
+    } 
 }

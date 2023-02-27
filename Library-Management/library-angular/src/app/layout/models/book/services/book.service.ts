@@ -33,4 +33,8 @@ export class BookService {
   issueBook(userId:any,data:any){
     return this.http.post('http://localhost:5004/library/user-book/'+userId,data);
   }
+
+  viewBooks(userId:any){
+    return this.http.get('http://localhost:5004/library/issued-books/'+userId);
+  }
 }
