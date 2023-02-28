@@ -30,7 +30,7 @@ module.exports={
     bookList : async()=>{
         try {
             const where = {
-                isAvilable: {
+                quaintity: {
                     [Op.ne] : 0
                 } 
             }
@@ -81,7 +81,7 @@ module.exports={
 
     deleteBook : async(bookId)=>{
         try {
-            const deleteData = await bookModel.update({isAvilable:0},{
+            const deleteData = await bookModel.update({quaintity:0},{
                 where:{
                     id: bookId   
                 }

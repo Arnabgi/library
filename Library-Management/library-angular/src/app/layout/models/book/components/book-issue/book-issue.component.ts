@@ -48,15 +48,19 @@ export class BookIssueComponent implements OnInit {
   this.userId =   this.activatedRoute.snapshot.paramMap.get('userId');
   console.log(this.userId);
   let addBookIssue = this.bookWithUserForm.value;
-  this.http.issueBook(this.userId,addBookIssue,).subscribe((result:any) => {
+  this.http.issueBook(this.userId,addBookIssue).subscribe((result:any) => {
     if(result.status == 200){
       console.log("Book Issued successfully");
       
-      this.route.navigateByUrl('/book/list');
+      this.route.navigateByUrl('/user/list');
     }
     else{
       console.log("Book Issued failed");
     }
   })
-}
+  }
+  
+  back(){
+    this.route.navigateByUrl('/user/list');
+  }
 }
