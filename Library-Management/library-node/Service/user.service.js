@@ -67,6 +67,7 @@ module.exports={
             }
             
         } catch (error) {
+            console.log(error);
             throw error;
         }
     },
@@ -177,7 +178,7 @@ module.exports={
             else{
                 return{
                     status:401,
-                    msg: "User deleted failed"
+                    msg: "User deleted failed",
                 }
             }
         } catch (error) {
@@ -185,4 +186,79 @@ module.exports={
             
         }
     },
+
+    editProfile: async(userId,value) => {
+        try {
+            let editProfile = await userModel.update(value,{
+                where : {
+                    id : userId
+                }
+            });
+            if(editProfile){
+                return {
+                    status: 200,
+                    msg: "Profile update successfully",
+                };
+            }
+            else{
+                return{
+                    status:401,
+                    msg: "Profile update failed"
+                }
+            }
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    },
+
+    viewProfile : async(userId)=> {
+        try {
+            const userData = await userModel.findAll({
+                where:{
+                    id: userId
+                }
+            });
+            if(userData){
+                return {
+                    status: 200,
+                    msg: "success",
+                    data: userData
+                };
+            }
+            else{
+                return{
+                    status:401,
+                    msg: "failed"
+                }
+            }
+        } catch (error) {
+            throw error;
+            
+        }
+    },
+
+    signOut : async(userId)=> {
+        try {
+            const signOut = await userModel.update({is_login: 0},{
+                where:{
+                    id: userId
+                }
+            });
+            if(signOut){
+                return {
+                    status: 200,
+                    msg: "User logout successfully",
+                };
+            }
+            else{
+                return {
+                    status: 200,
+                    msg: "User logout failed",
+                };
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
 }

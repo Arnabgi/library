@@ -8,12 +8,20 @@
 </head>
 <body>
     <h1>Dashboard</h1>
-        <button>
-            <a routerLink="/user/list">User Details</a>
+        <button routerLink="/user/list">
+            User Details
         </button>
         &nbsp;
-        <button>
-            <a routerLink="/book/list">Book Details</a>
+        <button routerLink="/book/list">
+            Book Details
+        </button>
+        &nbsp;
+        <button (click)="logOut()">
+            Logout
+        </button>
+        &nbsp;
+        <button routerLink="/user/edit-profile">
+            Edit Profile
         </button>
 </body>
 </html>

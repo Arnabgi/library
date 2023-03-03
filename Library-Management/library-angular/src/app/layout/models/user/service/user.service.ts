@@ -22,14 +22,21 @@ export class UserService {
   }
 
   delete(id:number) : Observable<any>{
-    return this.http.delete('http://localhost:5004/library/user-remove/'+id)
+    return this.http.delete('http://localhost:5004/library/user-remove/'+id);
   }
 
   view(id:number) : Observable<any> {
-    return this.http.get('http://localhost:5004/library/user/'+id)
+    return this.http.get('http://localhost:5004/library/user/'+id);
   }
 
   edit(id:any,data:any) : Observable<any> {
-    return this.http.put('http://localhost:5001/library/user/'+id,data);
+    return this.http.put('http://localhost:5004/library/user/'+id,data);
+  }
+
+  getProfile(): Observable<any> {
+    return this.http.get('http://localhost:5004/library/get-profile');
+  }
+  logout() : Observable<any> {
+    return this.http.get('http://localhost:5004/library/logout');
   }
 }

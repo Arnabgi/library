@@ -16,6 +16,7 @@ module.exports = {
                     })
                 }
                 else{
+                    req.email = verifiedJwt.email;
                     next();
                 }
             })
@@ -27,4 +28,26 @@ module.exports = {
             });
         }
     },
+
+    loginVerify : async(req,res,next) => {
+        if(req.email){
+            const isLogin = await userModel.findOne({
+                where: {
+                    email: req.email,
+                    is_login: 1
+                }
+            });
+            if(!isLogin){
+                return res.json({
+                    status: 401,
+                    message: "User must be login first"  
+                });
+            }
+            else{
+                //console.log("userId...........",isLogin.id);
+                req.id = isLogin.id;
+                next();
+            }
+        }
+    }
 }

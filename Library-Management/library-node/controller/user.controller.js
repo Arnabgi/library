@@ -49,9 +49,9 @@ module.exports={
         }
     },
 
-    viewUser : async(req,res)=>{
+    viewUser: async(req,res)=> {
         try {
-            console.log("view.......");
+            //console.log("view.......");
             let userId = req.params.id;
             let userData = await userService.viewUser(userId);
             res.json({
@@ -65,7 +65,7 @@ module.exports={
         }
     },
 
-    listUser: async(req,res)=>{
+    listUser: async(req,res)=> {
         try {
             //console.log("list......");
             let getData = await userService.listUser();
@@ -80,7 +80,7 @@ module.exports={
         }
     },
 
-    editUser : async(req,res)=>{
+    editUser: async(req,res)=> {
         try {
             const salt = await bcrypt.genSalt(10);
             let userId = req.params.id;
@@ -102,7 +102,40 @@ module.exports={
         }
     },
 
-    deleteUser : async(req,res)=>{
+    updateProfile : async(req,res) => {
+        try {
+            const userId = req.id;
+            let value = {
+            name: req.body.name,
+            phone: req.body.phone
+        };
+        let updateProfile = await userService.editProfile(userId,value);
+        res.json({
+            status: updateProfile.status ? updateProfile.status : '',
+            message: updateProfile.msg ? updateProfile.msg : '',
+            data: updateProfile.data ? updateProfile.data : ''
+        });  
+        } catch (error) {
+            res.send(error);
+        }
+    },
+
+    viewProfile: async(req,res)=> {
+        try {
+            let userId = req.id;
+            let userData = await userService.viewUser(userId);
+            res.json({
+                status: userData.status ? userData.status : '',
+                message: userData.msg ? userData.msg : '',
+                data: userData.data ? userData.data : ''
+            });
+        } catch (error) {
+            // console.log(error);
+            res.send(error);
+        }
+    },
+
+    deleteUser: async(req,res)=> {
         try {
             let userId = req.params.id;
             const removeUser = await userService.deleteUser(userId);
@@ -111,8 +144,21 @@ module.exports={
                 message: removeUser.msg ? removeUser.msg : '',
             });  
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             res.send(error);
         }
     },
+
+    signOut: async(req,res) => {
+        try {
+            const logout = await userService.signOut(req.id);
+            res.json({
+                status: logout.status ? logout.status : '',
+                message: logout.msg ? logout.msg : '',
+            });  
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
 }

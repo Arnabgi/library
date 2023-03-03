@@ -20,11 +20,12 @@
         </div>
         <div>
             <label>Email</label>
-            <input type="text" formControlName="email" readonly>
+            <input type="text" formControlName="email" *ngIf="!hasId">
+            <input type="text" formControlName="email" *ngIf="hasId" readonly>
         </div>
         <div *ngIf="!hasId">
             <label>Password</label>
-            <input type="text" formControlName="password">
+            <input type="password" formControlName="password">
         </div>
         <div>
             <label>Phone Number</label>
